@@ -2,6 +2,7 @@ extends CanvasLayer
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
+#test 2
 
 func show_message(text):
 	$Message.text = text
