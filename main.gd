@@ -1,6 +1,6 @@
 extends Node
 
-
+#Pick the mob type
 @export var mob_scene: PackedScene
 var score
 
