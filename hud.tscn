@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://2dvjy3j1qed7"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_ykgss"]
+[ext_resource type="FontFile" uid="uid://18istaqwn0le" path="res://dodge_assets/fonts/Xolonium-Regular.ttf" id="2_3kdho"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_fx3kd"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_mg2dh"]
+events = [SubResource("InputEventAction_fx3kd")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ykgss")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_right = 113.5
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_3kdho")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3kdho")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the dans!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = 259.0
+offset_right = 109.0
+offset_bottom = 345.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Coward"
+theme_override_fonts/font = ExtResource("2_3kdho")
+theme_override_font_sizes/font_size = 64
+text = "Give Up"
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 140.0
+offset_right = 130.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_3kdho")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_mg2dh")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
